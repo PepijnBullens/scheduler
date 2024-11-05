@@ -1,0 +1,23 @@
+$primary-color: #262626;
+$secondary-color: #333333;
+$primary-text-color: #F2F2F2;
+
+@font-face {
+    font-family: 'satoshi';
+    src: url(../fonts/Satoshi.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'satoshi';
+    color: $primary-text-color;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    background-color: $primary-color;
+}
