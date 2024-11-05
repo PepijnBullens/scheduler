@@ -1,14 +1,14 @@
 import React from 'react';
 
-interface HeaderProps {
+interface FooterProps {
   currentWeek: string;
   goToPreviousWeek: () => void;
   goToNextWeek: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ currentWeek, goToPreviousWeek, goToNextWeek }) => {
+const Footer: React.FC<FooterProps> = ({ currentWeek, goToPreviousWeek, goToNextWeek }) => {
   return (
-    <div className="header">
+    <div className="footer">
       <h2>{currentWeek}</h2>
       <button onClick={goToPreviousWeek}>Prev</button>
       <button onClick={goToNextWeek}>Next</button>
@@ -16,4 +16,4 @@ const Header: React.FC<HeaderProps> = ({ currentWeek, goToPreviousWeek, goToNext
   );
 };
 
-export default Header;
+export default Footer;
