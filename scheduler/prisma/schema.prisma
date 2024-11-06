@@ -1,8 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
@@ -13,11 +9,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tasks {
-  id          Int      @id @default(autoincrement())
-  day         Int
+model Users {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  password String
+  admin    Boolean @default(false)
+}
+
+model Task {
+  id          Int    @id @default(autoincrement())
   color       String?
   task        String
-  time        String
+  date        DateTime
   description String?
 }

@@ -22,39 +22,45 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .container .footer {
   width: 100%;
-  height: 80px;
-  background-color: #333333;
+  height: 180px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  gap: 15px;
 }
 .container .footer h2 {
   font-size: 24px;
   font-weight: 500;
-  margin-right: 10px;
 }
-.container .footer button {
+.container .footer .week-controllers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .footer .week-controllers button {
   width: 80px;
-  margin: 0 10px;
-  padding: 10px 10px;
+  margin: 0 20px;
+  padding: 15px 20px;
   border-radius: 5px;
   background-color: transparent;
   border: 1px solid #F2F2F2;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.container .footer button:hover {
+.container .footer .week-controllers button:hover {
   background-color: #F2F2F2;
   color: #262626;
 }
 .container .planner {
   width: 100%;
-  height: calc(100% - 80px);
+  height: calc(100% - 180px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +79,7 @@ body {
   gap: 5px;
 }
 .container .planner .week-view .day-column h3 {
-  padding: 10px;
+  padding: 15px;
   height: 80px;
   font-size: 20px;
   font-weight: 500;
@@ -94,7 +100,12 @@ body {
   list-style: none;
   border-radius: 5px;
   transition: height 0.3s ease;
-  cursor: pointer;
+}
+.container .planner .week-view .day-column ul li.no-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
 }
 .container .planner .week-view .day-column ul li .task {
   height: 20px;
@@ -110,6 +121,7 @@ body {
   font-size: 16px;
   font-weight: 400;
 }
-.container .planner .week-view .day-column ul li:hover {
+.container .planner .week-view .day-column ul li:hover:not(.no-task) {
   height: 200px;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -6,14 +6,14 @@ interface FooterProps {
   goToNextWeek: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ currentWeek, goToPreviousWeek, goToNextWeek }) => {
+export default function Footer({ currentWeek, goToPreviousWeek, goToNextWeek }: any) {     
   return (
     <div className="footer">
       <h2>{currentWeek}</h2>
-      <button onClick={goToPreviousWeek}>Prev</button>
-      <button onClick={goToNextWeek}>Next</button>
+      <div className="week-controllers">
+        <button onClick={goToPreviousWeek}>Prev</button>
+        <button onClick={goToNextWeek}>Next</button>
+      </div>
     </div>
   );
 };
-
-export default Footer;
