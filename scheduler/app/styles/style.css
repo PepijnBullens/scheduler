@@ -107,6 +107,9 @@ body {
   align-items: center;
   background-color: #333333;
 }
+.container .planner .week-view .day-column ul li.private-task {
+  background-color: #FF0000;
+}
 .container .planner .week-view .day-column ul li .task {
   height: 20px;
 }

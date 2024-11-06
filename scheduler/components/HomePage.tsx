@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import WeekView from "../components/WeekView";
 
-export default function HomePage({ initialTasks, initialStartDate, initialEndDate }: any) {    
+export default function HomePage({ initialTasks, initialStartDate, initialEndDate }: any) {     
     // Parse the initial start and end dates
     const startDate = new Date(initialStartDate);
     const endDate = new Date(initialEndDate);
@@ -40,13 +40,12 @@ export default function HomePage({ initialTasks, initialStartDate, initialEndDat
         const fetchTasksForWeek = async (startDate: string, endDate: string) => {
             const response = await fetch(`/api/tasks?startDate=${startDate}&endDate=${endDate}`);
             const data = await response.json();
+            
             if (data.tasksFromDB) {
                 setTasks(data.tasksFromDB);
                 setDays(generateDaysArray(new Date(currentWeek.startDate)));
             }
-        };
-        console.log(days);
-        
+        };        
 
         if (currentWeek.startDate && currentWeek.endDate) {
             fetchTasksForWeek(currentWeek.startDate.toISOString(), currentWeek.endDate.toISOString());

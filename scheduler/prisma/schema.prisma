@@ -16,10 +16,18 @@ model Users {
   admin    Boolean @default(false)
 }
 
+model Colors {
+  id    Int    @id @default(autoincrement())
+  color String
+  task  Task[]
+}
+
 model Task {
   id          Int    @id @default(autoincrement())
-  color       String?
+  colorId     Int
+  color       Colors @relation(fields: [colorId], references: [id])
   task        String
-  date        DateTime
+  date        DateTime @default(now())
   description String?
+  private     Boolean @default(false)
 }

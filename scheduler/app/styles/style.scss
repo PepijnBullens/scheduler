@@ -98,6 +98,10 @@
                             background-color: $secondary-color;
                         }
 
+                        &.private-task {
+                            background-color: $private-task-color;
+                        }
+
                         .task {
                             height: 20px;
                         }

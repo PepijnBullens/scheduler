@@ -20,12 +20,15 @@ export async function GET(req: Request) {
 
     // Fetch tasks from the database within the week range
     const tasksFromDB = await prisma.task.findMany({
-      orderBy: { date: "asc" },
+      orderBy: { date: 'asc' },
       where: {
         date: {
           gte: startDate,
           lte: endDate,
         },
+      },
+      include: {
+        color: true,
       },
     });
 

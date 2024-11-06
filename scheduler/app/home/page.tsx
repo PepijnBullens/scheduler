@@ -32,6 +32,9 @@ export default async function Home() {
           lte: lastday,
         },
       },
+      include: {
+        color: true,
+      },
     })}
     initialStartDate={firstday.toISOString()}  // ISO string for the start date
     initialEndDate={lastday.toISOString()}    // ISO string for the end date
