@@ -5,16 +5,6 @@ import Footer from "../components/Footer";
 import WeekView from "../components/WeekView";
 
 export default function HomePage({ initialTasks, initialStartDate, initialEndDate }: any) {    
-    const days = [
-        ["Monday", 0],
-        ["Tuesday", 1],
-        ["Wednesday", 2],
-        ["Thursday", 3],
-        ["Friday", 4],
-        ["Saturday", 5],
-        ["Sunday", 6],
-    ];
-
     // Parse the initial start and end dates
     const startDate = new Date(initialStartDate);
     const endDate = new Date(initialEndDate);
@@ -23,6 +13,21 @@ export default function HomePage({ initialTasks, initialStartDate, initialEndDat
     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
         throw new Error("Invalid start or end date.");
     }
+
+    const generateDaysArray = (startDate: Date) => {
+        const daysArray = [];
+        const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        for (let i = 0; i < 7; i++) {
+            daysArray.push([
+                dayNames[i],
+                i,
+                new Date(startDate.setDate(startDate.getDate() + (i === 0 ? 0 : 1))).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+            ]);
+        }
+        return daysArray;
+    };
+
+    const [days, setDays] = useState(generateDaysArray(new Date(startDate)));
 
     const [currentWeek, setCurrentWeek] = useState({
         startDate: startDate,
@@ -37,8 +42,11 @@ export default function HomePage({ initialTasks, initialStartDate, initialEndDat
             const data = await response.json();
             if (data.tasksFromDB) {
                 setTasks(data.tasksFromDB);
+                setDays(generateDaysArray(new Date(currentWeek.startDate)));
             }
         };
+        console.log(days);
+        
 
         if (currentWeek.startDate && currentWeek.endDate) {
             fetchTasksForWeek(currentWeek.startDate.toISOString(), currentWeek.endDate.toISOString());
