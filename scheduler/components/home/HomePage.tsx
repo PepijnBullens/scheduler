@@ -1,4 +1,4 @@
-"use client"; // Client-side component
+"use client";
 
 import { useState, useEffect } from "react";
 import Footer from "./Footer";
